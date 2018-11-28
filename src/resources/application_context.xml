@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+        <bean id = "student" class = "com.demo.通过全类名配置bean.Student">
+            <!--调用构造器方法-->
+            <constructor-arg index="0" value="20162590"/>
+            <constructor-arg index="1" value="Reformat"/>
+
+            <!--调用setter方法设置属性-->
+            <property name="data" >
+                <value><![CDATA[<就是爱男男(可显示任意符号)>]]></value>
+            </property>
+
+            <!--外部引用关系-->
+            <property name="gf" ref="girlfriend"></property>
+            <!--内部引用关系-->
+            <property name="number" >
+                <bean class = "com.demo.通过全类名配置bean.PhoneNumber">
+                    <property name="nuumber" value="18675468016"/>
+                </bean>
+            </property>
+
+            <!--配置集合list属性>-->
+            <property name="car">
+                <list>
+                    <ref bean="car1"/>
+                    <ref bean="car2"/>
+                    <ref bean="car3"/>
+                </list>
+            </property>
+
+            <!--配置集合map类型的成员变量-->
+            <property name="grade">
+                <map>
+                    <entry key="JAVA" value="100"/>
+                    <entry key="MYSQL" value="99"/>
+                    <entry key="SPRING" value="98"/>
+                </map>
+            </property>
+
+            <!--配置Properties属性-->
+            <property name="properties">
+                <props>
+                    <prop key="账号">20162590</prop>
+                    <prop key="密码">123456</prop>
+                </props>
+            </property>
+
+            <!--引用外部bean-->
+            <property name="family" ref="people"></property>
+        </bean>
+
+
+        <bean id = "girlfriend" class = "com.demo.通过全类名配置bean.GirlFriend">
+            <constructor-arg index="0" value="王轶男"/>
+            <constructor-arg index="1" value="Best"/>
+            <constructor-arg index="2" value="Max"/>
+        </bean>
+
+        <!--外部list子项-->
+        <bean id = "car1" class = "com.demo.通过全类名配置bean.Car">
+            <constructor-arg value="AE86"/>
+        </bean>
+        <bean id = "car2" class = "com.demo.通过全类名配置bean.Car">
+            <constructor-arg value="GTR"/>
+        </bean>
+        <bean id = "car3" class = "com.demo.通过全类名配置bean.Car">
+            <constructor-arg value="BMW"/>
+        </bean>
+
+        <!--配置单例的集合容器，供多个bean进行引用，需要导入Util命名空间-->
+        <util:list id = "people">
+            <value>爸爸</value>
+            <value>妈妈</value>
+            <value>男男</value>
+        </util:list>
+
+        <!--通过p命名空间为 bean 属性赋值，需要先导入p命名空间-->
+        <bean id ="student2" class="com.demo.通过全类名配置bean.Student" p:data="爱鹏鹏，嘻嘻嘻嘻">
+            <constructor-arg index="0" value="20162516"/>
+            <constructor-arg index="1" value="NanNan"/>
+        </bean>
+</beans>

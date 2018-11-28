@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+        <!--使用bean的scope属性配置bean的作用域-->
+        singleton：单例的，在整个容器生命周期中只创建一个bean
+        prototype：原型的，每次申请得到bean容器时，会在Java中分配新的空间
+        <bean id = "demo1" class = "com.demo.bean的作用域.Student"
+              p:name="Reformat" scope="singleton"></bean>
+
+        <bean id = "demo2" class = "com.demo.bean的作用域.Student"
+              p:name="Reformat" scope="prototype"></bean>
+
+</beans>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--通过静态工厂方法配置bean实例，注意不是配置静态工厂方法实例，而是配置bean实例-->
+    <!--
+        class属性：指向静态方法的全类目
+        factory-method：指向静态方法的名字
+        constructor-arg:如果工厂方法需要传入参数，则使用constructor-arg来配置参数
+    -->
+    <bean id = "student1" class="com.demo.通过工厂方法配置bean.StaticStudentFactory"
+        factory-method="getStudentOf">
+        <constructor-arg value="Reformat"></constructor-arg>
+    </bean>
+
+
+    <!--通过实例工厂方法配置bean实例-->
+    <!--
+        factory-bean：指向实例工厂方法的bean
+        factory-method：指向静态方法的名字
+        constructor-arg:如果工厂方法需要传入参数，则使用constructor-arg来配置参数
+    -->
+
+    <!--配置工厂的实例-->
+    <bean id = "studentFactory" class="com.demo.通过工厂方法配置bean.InstanceStudentFactory"></bean>
+    <!--通过工厂实例来配置bean-->
+    <bean id = "student2" factory-bean="studentFactory" factory-method="getStudentOf">
+        <constructor-arg value="Nan"></constructor-arg>
+    </bean>
+</beans>

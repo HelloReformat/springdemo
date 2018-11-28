@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--继承-->
+    <!--定义为父抽象类，作为模板-->
+    <bean id = "Student" class = "com.demo.bean的继承与依赖.People"
+        p:job="Student" abstract="true"></bean>
+
+    <!--继承后的子bean，另外子bean的class可以重定向-->
+    <bean id = "People_Reformat" parent="Student" p:name="Reformat"></bean>
+
+    <!--依赖-->
+    <!--通过depend-on设置Bean前置依赖的Bean（可以同时配置多个前置依赖）-->
+    <bean id = "Student2" parent="Student"
+          depends-on="car"  p:car-ref="car" ></bean>
+
+    <bean id = "car" class="com.demo.bean的继承与依赖.Car" p:name="GTR"></bean>
+</beans>

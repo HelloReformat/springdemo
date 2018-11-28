@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+       <bean id="People" class="com.demo.SpEL.People" depends-on="Address">
+           <property name="name" value="Reformat"></property>
+           <!--使用SpEL，引用其他Bean-->
+           <property name="address" value="#{Address}"></property>
+           <!--使用SpEL，引用其他对象的公共变量-->
+           <property name="city" value="#{Address.Location}"></property>
+           <!--使用SpEL，进行运算操作-->
+           <property name="info" value="#{Address.area > 1000 ? '有钱人' : '辣鸡'}"></property>
+       </bean>
+
+       <bean id = "Address" class="com.demo.SpEL.Address">
+           <!--使用SpEL，引用静态类方法-->
+           <property name="area" value="#{T(Math).pow(50,2)}"></property>
+           <property name="location" value="XXX"></property>
+       </bean>
+
+</beans>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!--配置ICO容器创建和销毁时调用的方法-->
+    <bean id = "car" class="com.demo.管理bean的生命周期.Car"   init-method="initMethod" destroy-method="destroyMethod">
+        <property name="name" value="GTR"></property>
+    </bean>
+
+    <!--配置bean的后置处理器，不需要id，全局性-->
+    <bean class = "com.demo.管理bean的生命周期.MyBeanPostProcessor"></bean>
+
+</beans>

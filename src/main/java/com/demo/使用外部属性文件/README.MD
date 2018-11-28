@@ -1,0 +1,5 @@
+## 使用外部properties的意义
+
++ 在配置Bean时，有时候需要在Bean配置中混入系统部署的细节信息（例如：文件路径，数据源配置信息等等），而这些部署细节实际上需要和Bean相互分离
++ Spring中的提供了一个PropertyPlaceholderConfigurer的BeanFactory后端处理器，这个处理器允许用户将Bean配置部分内容外移到属性文件中，可以在Bean配置文件里使用形式为${var}的变量，PropertyPlaceholderConfigurer从属性文件里加载属性，并使用这些属性来进行替换变量
++ 在属性文件中使用${propName} 实现属性间的相互引用

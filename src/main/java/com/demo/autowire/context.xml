@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--使用autowire属性指定自动装配的方式-->
+    <!--1.byNmae：根据 bean的名字 和 成员变量的setter方法参数名 进行自动装配，若有匹配则自动装配-->
+    <bean id = "Student1" class="com.demo.autowire.Student"
+          autowire="byName"></bean>
+    <!--2.byType: 根据 bean的类型 和 当前bean的属性类型进行装配，若存在相同Type多个bean的情况，抛出异常-->
+    <bean id = "Student2" class="com.demo.autowire.Student"
+         autowire="byType"></bean>
+
+    <bean id = "car" class="com.demo.autowire.Car"
+          p:name="GTR" p:price="998"></bean>
+
+    <bean id = "gf" class="com.demo.autowire.GirdFriend"
+          p:name="bitch" p:bar="A" ></bean>
+</beans>
